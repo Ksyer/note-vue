@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>-</button>
+    <span>1</span>
+    <button>+</button>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        // DOM 4步
+        // 1. 查找触发事件的元素
+        // 本例中：查找2个按钮元素
+        /*  let btnMinus = document.body.children[0];
+         let btnAdd = document.body.children[2]; */
+        let $btnMinus = $('body>button:nth-child(1)');
+        let $btnAdd = $('body>button:nth-child(3)');
+        // 2. 绑定事件处理函数
+        $btnAdd.click(function () {
+            // 3. 查找要修改的元素
+            let $span = $('span');
+            // 4. 修改元素
+            // 获取$span的内容，转为整数
+            let n = parseInt($span.html());
+            // $span的内容+1
+            n++;
+            // 将修改后的内容放回$span中
+            $span.html(n);
+        })
+
+
+        $btnMinus.click(function () {
+            // 3. 查找要修改的元素
+            let $span = $('span');
+            // 4. 修改元素
+            // 获取$span的内容，转为整数
+            let n = parseInt($span.html());
+            // $span的内容+1
+            n--;
+            // 将修改后的内容放回$span中
+            $span.html(n);
+        });
+
+    </script>
+  </body>
+</html>

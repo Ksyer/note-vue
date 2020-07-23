@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        学习: directive自定义指令
+        案例: 打开网页自动获取input焦点
+     -->
+     <div id="app">
+        <input v-myfocus>
+     </div>
+
+     <script src="../js/vue.js"></script>
+     <script>
+         Vue.directive('myfocus', {
+            // inserted: function(domElem) {
+            //     domElem.focus();
+            // }
+            // 简写
+            inserted(el) {
+                el.focus();
+            }
+         })
+
+         new Vue({
+            el: "#app"
+         })
+     </script>
+</body>
+</html>

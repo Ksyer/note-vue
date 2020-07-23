@@ -7,7 +7,14 @@
 </head>
 <body>
     <div id="app">
-        {{msg}}
+        <label>用户</label>
+        <input type="text" :disabled="!isAgree">
+        <br>
+        <label>密码</label>
+        <input type="text" :disabled="!isAgree">
+        <br>
+        <input type="checkbox" v-model:checked="isAgree">
+        <label>同意</label>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -15,7 +22,7 @@
         new Vue({
             el: "#app",
             data: {
-                msg: "hello world!"
+                isAgree: false
             }
         })
     </script>

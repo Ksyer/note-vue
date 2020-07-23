@@ -7,7 +7,8 @@
 </head>
 <body>
     <div id="app">
-        {{msg}}
+        <h3 v-text="msg"></h3>
+        <h3 v-html="msg"></h3>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -15,7 +16,7 @@
         new Vue({
             el: "#app",
             data: {
-                msg: "hello world!"
+                msg: "<a href='javascript:;'>你好,世界!</a>"
             }
         })
     </script>

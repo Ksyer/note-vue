@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="app">
-        {{msg}}
+        <span v-pre>{{msg}}</span>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -15,7 +15,7 @@
         new Vue({
             el: "#app",
             data: {
-                msg: "hello world!"
+                msg: "this will not be compiled"
             }
         })
     </script>

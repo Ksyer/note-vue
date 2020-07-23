@@ -7,7 +7,10 @@
 </head>
 <body>
     <div id="app">
-        {{msg}}
+        <img src="./img/1.png" v-if="pm25 < 100">
+        <img src="./img/2.png" v-else-if="pm25 < 200">
+        <img src="./img/3.png" v-else-if="pm25 < 300">
+        <img src="./img/4.png" v-else>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -15,7 +18,7 @@
         new Vue({
             el: "#app",
             data: {
-                msg: "hello world!"
+                pm25: 250
             }
         })
     </script>

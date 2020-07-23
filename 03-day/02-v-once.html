@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3 v-once>{{time}}</h3>
+        <h3>{{time}}</h3>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                time: new Date().toLocaleString(),
+            },
+        });
+        setInterval(function () {
+            vm.time = new Date().toLocaleString();
+        }, 1000);
+    </script>
+</body>
+
+</html>

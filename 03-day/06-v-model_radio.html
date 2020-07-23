@@ -7,26 +7,17 @@
 </head>
 <body>
     <div id="app">
-        <button @click="minus">－</button>
-        <span>{{n}}</span>
-        <button @click="add">＋</button>
+        性别:
+        男 <input type="radio" name="sex" value="1" v-model:checked="sex">
+        女 <input type="radio" name="sex" value="0" v-model:checked="sex">
     </div>
-
 
     <script src="../js/vue.js"></script>
     <script>
-        var vm = new Vue({
+        new Vue({
             el: "#app",
             data: {
-                n: 0
-            },
-            methods: {
-                add() {
-                    this.n++;
-                },
-                minus() {
-                    this.n--;
-                }
+                sex: ""
             }
         })
     </script>

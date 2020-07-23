@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <select v-model:value="orderStatus">
+            <!-- <option value="1">已下单</option>
+            <option value="2">未付款</option>
+            <option value="3">已付款</option>
+            <option value="4">未发货</option>
+            <option value="5">已发货</option>
+            <option value="6">未签收</option>
+            <option value="7">已签收</option> -->
+            <option v-for="(s, i) of status" :key="i" v-text="s" :value="i+1"></option>
+        </select>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                orderStatus: "6",
+                status: ["已下单", "未付款", "已付款", "未发货", "已发货", "未签收", "已签收"]
+            }
+        })
+    </script>
+</body>
+</html>

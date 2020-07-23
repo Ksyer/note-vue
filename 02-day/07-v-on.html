@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d1,
+        .d2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+        
+        .d1:hover,
+        .d2:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            v-on: 绑定事件
+            say('实参'), 注意:不是形参
+         -->
+        <!-- <div class="d1" v-on:click="say('d1')"></div>
+        <div class="d2" v-on:click="say('d2')"></div> -->
+        <!-- 
+            简写
+         -->
+        <div class="d1" @click="say('亮亮')"></div>
+        <div class="d2" @click="say('然然')"></div>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            methods: {
+                say(name) {
+                    console.log(`${name}疼!`);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

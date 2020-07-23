@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" :value="keyWords" @input="myChange"><button @click="search">百度一下</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                keyWords: ""
+            },
+            methods: {
+                myChange(e) {
+                    this.keyWords = e.target.value;
+                },
+                search() {
+                    if (!this.keyWords.trim()) {
+                        console.log("keyWords required");
+                    }else {
+                        console.log(`已搜到相关${this.keyWords}的内容!`);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

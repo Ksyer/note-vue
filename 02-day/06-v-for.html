@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            学习: v-for
+            案例: 使用v-for遍历人名数组，并在页面显示人名列表
+         -->
+        <ul>
+            <!-- 循环:数组 -->
+            <!-- <li v-for="(user1, a) of users1" :key="a" v-text="`${a+1}--${user1}`"></li> -->
+            <!-- 循环: 对象 -->
+            <!-- <li v-for="(user2, b) of users2" :key="b" >{{b}}--{{user2}}</li> -->
+            <!-- 循环:对象数组 -->
+            <li v-for="(user3, c) of users3" :key="c" v-text="`${c+1}--${user3.name}--${user3.age}`"></li>
+        </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                // 循环:数组
+                // users1:['亮亮', '然然', '东东'],
+                // 循环: 对象
+                // users2: {
+                //     name: "亮亮",
+                //     age: 20
+                // },
+                // 循环: 对象数组
+                users3: [
+                    {'name': '亮亮','age': '22'},
+                    {'name': '然然','age': '23'},
+                    {'name': '东东','age': '24'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

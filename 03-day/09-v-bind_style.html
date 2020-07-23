@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fly {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 1. 
+            data:{
+                top: "100px",
+                left: "200px"
+            } 
+        -->
+        <!-- <div class="fly" :style="{top: top, left: top}"></div> -->
+        <!-- １．１
+            简写
+         -->
+        <div class="fly" :style="{top, left}"></div>
+        <!-- 2.
+            data: {
+                imgS: {
+                    top: "100px",
+                    left: "200px"
+                }
+            }
+         -->
+        <!-- <div class="fly" :style="imgS"></div> -->
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                top: "100px",
+                left: "200px"
+                // imgS: {
+                //     top: "100px",
+                //     left: "200px"
+                // }
+            }
+        })
+
+        window.onkeydown = function(e) {
+            // alert(e.keyCode)
+            // 37 ←　３８　↑　３９　→　４０　↓
+            // 1. 
+            var left = parseInt(vm.left);
+            var top = parseInt(vm.top);
+            if (e.keyCode == 37) {
+                left -= 10;
+                vm.left = left + "px";
+            }else if (e.keyCode == 38) {
+                top -= 10;
+                vm.top = top + "px";
+            }else if (e.keyCode == 39) {
+                left += 10;
+                vm.left = left + "px";
+            }else {
+                top += 10;
+                vm.top = top + "px";
+            }
+
+            // 2. 
+            // var left = parseInt(vm.imgS.left);
+            // var top = parseInt(vm.imgS.top);
+            // if (e.keyCode == 37) {
+            //     left -= 10;
+            //     vm.imgS.left = left + "px";
+            // }else if (e.keyCode == 38) {
+            //     top -= 10;
+            //     vm.imgS.top = top + "px";
+            // }else if (e.keyCode == 39) {
+            //     left += 10;
+            //     vm.imgS.left = left + "px";
+            // }else {
+            //     top += 10;
+            //     vm.imgS.top = top + "px";
+            // }
+            
+           
+        }
+    </script>
+</body>
+</html>

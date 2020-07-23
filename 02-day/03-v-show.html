@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo {
+            position: relative;
+            margin: 100px auto;
+            width: 400px;
+            height: 100px;
+            background-color: #ccc;
+            text-align: center;
+
+        }
+        
+        .demo span:nth-child(1) {
+            line-height: 100px;
+        }
+
+        .demo span:nth-child(2) {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            line-height: 30px;
+        }
+        .demo span:nth-child(2):hover {
+            color: #fff;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="show">click me</button>
+        <div class="demo" v-show="isShow" >
+            <span>您的浏览器版本过低, 请升级到最近版本</span>
+            <span @click="hide">×</span>
+        </div>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            },
+            methods: {
+                show() {
+                    this.isShow = true;
+                },
+                hide() {
+                    this.isShow = false;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

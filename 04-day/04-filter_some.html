@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        学习: Vue.filter
+        案例: 过滤器 sex传参,连用
+     -->
+    <div id="app">
+        <h3>性别1: {{sex1 | sexFilter | iconFilter}}</h3>
+        <h3>性别2: {{sex2 | sexFilter | iconFilter}}</h3>
+
+        <h3>性别1: {{sex1 | sexFilter("en") | iconFilter}}</h3>
+        <h3>性别1: {{sex2 | sexFilter("en") | iconFilter}}</h3>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.filter("sexFilter", function(oldVal, lang){
+            if (lang == "en") {
+                return oldVal == 1 ? "Male" : "Female";
+            }else {
+                return oldVal == 1 ? "男" : "女";
+            }
+        });
+
+        Vue.filter("iconFilter", function(oldVal){
+            if (oldVal == "男" || oldVal == "Male") {
+                return oldVal + "♂";
+            }else {
+                return oldVal +"♀";
+            }
+        });
+
+        new Vue({
+            el: "#app",
+            data: {
+                sex1: 1,
+                sex2: 0
+            }
+        })
+    </script>
+</body>
+</html>

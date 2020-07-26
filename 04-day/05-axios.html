@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      案例: axios vue 实现ajax请求
+     -->
+    <script src="../js/axios.min.js"></script>
+    <script>
+      axios.defaults.baseURL = "http://xzserver.applinzi.com";
+
+      axios.get("/index").then(function (result) {
+        console.log(result.data);
+      });
+
+      axios
+        .get("/details", {
+          params: {
+            lid: 5,
+          },
+        })
+        .then(function (result) {
+          console.log(result.data);
+        });
+
+      axios
+        .post("/users/signin", "uname=dingding&upwd=123456")
+        .then(function (result) {
+          console.log(result.data);
+        });
+    </script>
+  </body>
+</html>

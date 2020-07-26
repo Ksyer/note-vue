@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        学习: vue生命周期
+            create, mount, update, destroy
+        钩子函数: 
+            beforeCreate, created, beforeMount, mounted, 
+            beforeUpdate, updated, beforeDestroy, destroyed
+     -->
+    <div id="app">
+        <ul>
+            <li v-for="(p, i) of products" :key="i">
+                {{p.pid}} | {{p.title}} | {{p.details}}
+            </li>
+        </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                products: []
+            },
+            // 强调: 以下8个函数不要全部写出来, 而是用到哪个写哪个.
+            beforeCreate() {
+                console.log("创建前...");
+            },
+            created() {
+                console.log("创建后...");
+            },
+            beforeMount() {
+                console.log("挂在前...");
+            },
+            mounted() {
+                console.log("挂在后...");
+                // this -> new Vue()
+                // 这个时候既有data, 又有虚拟DOM树了, 什么都不缺了!
+                axios.get(
+                    "http://xzserver.applinzi.com/index"
+                ).then(result => {
+                    console.log(result.data);
+                    // 希望将结果放到data中的products变量上保存
+                    this.products = result.data;
+                    // 应该能出发更新阶段
+                })
+            },
+            beforeUpdate() {
+                console.log("更新前...");
+            },
+            updated() {
+                console.log("更新后...");
+            },
+            updateDestroy() {
+                console.log("销毁前...");
+            },
+            destroyed() {
+                console.log("销毁后...");
+            }
+        })
+        // 手工在控制台输入: vm: $destroy()可以看到销毁阶段
+    </script>
+</body>
+</html>

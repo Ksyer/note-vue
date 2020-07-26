@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Vue.component
+        案例: 创建单个组件计数器my-counter
+     -->
+    <div id="app">
+        <ul>
+            <li>
+                <my-counter></my-counter>
+            </li>
+            <li>
+                <my-counter></my-counter>
+            </li>
+            <li>
+                <my-counter></my-counter>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.component("my-counter", {
+            template: `
+                <div>
+                    <button @click="minus">-</button>
+                    <span>{{n}}</span>
+                    <button @click="add">+</button>
+                </div>
+            `,
+            data() {
+                    return {
+                        n: 0
+                    }
+                },
+            methods: {
+                minus() {
+                    if (this.n > 0)
+                    this.n--;
+                },
+                add() {
+                    if (this.n < 10)
+                    this.n++;
+                }
+            }
+        });
+
+        new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+</html>

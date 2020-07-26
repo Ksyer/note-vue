@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        学习: 计算属性computed
+        优点: 计算一次, 缓存取值. 如果计算中的变量值有变化, 那那就会跟着计算一次.
+     -->
+    <div id="app">
+        <h3>总计: {{total.toFixed(2)}}</h3>
+        <h3 v-for="(p, i) of cart" :key="i">{{p.name}} | {{p.price}} | {{p.count}} | 合计: {{(p.price*p.count).toFixed(2)}}</h3>
+        <h3>总计: {{total.toFixed(2)}}</h3>
+        
+        <!-- 
+            没用计算属性的情况, 用函数获取, 会重复计算,没有缓存取值.
+            下面两次调用了总计, 执行了2次计算.
+         -->
+         <!-- <h3>总计: {{total().toFixed(2)}}</h3>
+         <h3 v-for="(p, i) of cart" :key="i">{{p.name}} | {{p.price}} | {{p.count}} | 合计: {{(p.price*p.count).toFixed(2)}}</h3>
+         <h3>总计: {{total().toFixed(2)}}</h3> -->
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                cart: [
+                    {name: "小米手机", price: 1599, count: 2},
+                    {name: "华为手机", price: 3599, count: 1},
+                    {name: "vivo手机", price: 2599, count: 1}
+                ]
+            },
+            // methods: {
+            //     total() {
+            //         console.log("执行了一次");
+            //         var total = 0;
+            //         for (var p of this.cart) {
+            //             total += p.price * p.count
+            //         }
+            //         return total;
+            //     }
+            // },
+            computed: {
+                total() {
+                    console.log("执行了一次");
+                    var total = 0;
+                    for (var p of this.cart) {
+                        total += p.price * p.count
+                    }
+                    return total;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

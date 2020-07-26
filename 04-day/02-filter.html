@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        学习: Vue.filter
+     -->
+    <div id="app">
+        <h3>性别1: {{sex1 | sexFilter}}</h3>
+        <h3>性别2: {{sex2 | sexFilter}}</h3>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.filter("sexFilter", function(oldVal) {
+            return oldVal == 1 ? "男" : "女";
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                sex1: 1,
+                sex2: 0
+            }
+        })
+    </script>
+</body>
+</html>

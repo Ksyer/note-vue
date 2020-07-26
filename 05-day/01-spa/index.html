@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        router: 路由器
+     -->
+    <div id="app">
+        <router-view></router-view>
+    </div>
+
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/vue-router.js"></script>
+    <script src="./js/details.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/nofound.js"></script>
+    <script src="./js/router.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            router
+        })
+    </script>
+</body>
+</html>
